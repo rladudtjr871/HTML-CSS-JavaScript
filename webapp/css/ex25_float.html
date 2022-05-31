@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #menu {
+            background-color: orange;
+            width: 800px;
+            height: 100px;
+        }
+
+        #submenu {
+            background-color: yellow;
+            width: 200px;
+            height: 500px;
+            float: left;
+
+        }
+
+        #content {
+            background-color: cornflowerblue;
+            width: 600px;
+            height: 500px;
+            /* 1. submenu만 float을 주면 content랑 겹치는 부분이 생김 */
+            /* 2. 컨텐츠도 left를 주면 쌓이듯이 돼서 정삭적으로 보임 */
+            float: left;
+        }
+
+        #footer {
+            /* 앞의 요소가 float되어서 지금 요소가 위로 말려 올라가는 현상 제거 */
+            clear: both;
+            background-color: green;
+            width: 800px;
+            height: 50px;
+        }
+
+        /* float를 사용하면 부모영역이 줄어서 부모영역을 벗어나면 오버플로우가 발생하여 자동 개행된다. */
+        /* body(창)을 줄여보면 알 수 있다. */
+        /* #menu는 크기를 800으로 지정해서 body가 줄어도 유지된다. */
+        /* submenu와 content는 각각은 200, 600이기때문에 원래 위치(float 전)로 바뀐다. */
+
+        /* 아래처럼 부모인 main의 크기가 지정되면 부모의 크기가 고정이기때문에 body가 줄어도 모양이 유지된다. */        
+        #main {
+            /* border: 30px solid gray; */
+            /* 부모의 크기 지정 */
+            width: 800px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ex25_float.html -->
+
+    <h1>페이지 레이아웃</h1>
+
+    <!-- id가 뭔가 나열된다면 부모 id를 만들어주는 버릇은 좋다. -->
+    <div id="main">
+        <div id="menu">주메뉴(orange)</div>
+        <div id="submenu">보조메뉴(yellow)</div>
+        <div id="content">콘텐츠(blue)</div>
+        <div id="footer">하단(green)</div>
+        
+
+    </div>
+
+
+
+</body>
+</html>
