@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #news {
+            width: 648px;
+            border-left: 1px solid #CCC;
+            border-right: 1px solid #CCC;
+            margin: 0 auto;
+            /* 폰트는 상속을 받는다. 그래서 news에 하면 그 안으로도 다 적용 */
+            font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",Dotum,"돋움",sans-serif;
+            padding: 50px 26px;
+        }
+        
+        #news > div {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #EEE;
+        }
+
+        #news > div:last-child {
+            border-bottom: 0;
+        }
+
+        #news > h1 {
+            color: #3f63bf;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+        
+        #news > div > img {
+            float: left;
+            margin-right: 16px;
+        }
+
+        #news > div > div {
+            float: left;
+            width: 500px;
+        }
+
+        #news > div::after {
+            /* float 말려올라가는 현상 방지 */
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        #news > div > div > h2 {
+            font-size: 15px;
+            margin: 0;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+
+        #news > div > div > div:nth-child(2) {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        #news > div > div > div:nth-child(3) {
+            font-size: 12px;
+            color: #888;
+        }    
+
+    </style>
+</head>
+<body>
+    <!-- ex48.html -->
+    <div id="news">
+        <h1>SKT UAM 컨소시엄 "K-UAM 그랜드챌린지" 제안서 제출</h1>
+
+        <div>
+            <img src="images/KakaoTalk_20220531_153052018.jpg">
+            <div>
+                <h2>K-UAM 실증사업 막 오른다…기업들 잇따라 출사표</h2>
+                <div>'한국형 도심항공교통(K-UAM)' 정부 실증 사업이 본격 막을 올린다. 2025년 UAM 상용화를 앞두고 정부가 벌이는 첫 실증사업에 기업들이 잇따라 …</div>
+                <div>한국경제</div>
+            </div>            
+        </div>
+
+        <div>
+            <img src="images/KakaoTalk_20220531_153052018_01.jpg">
+            <div>
+                <h2>통신사, UAM 리더는 "나요, 나"</h2>
+                <div>‘하늘을 나는 택시’라 불리는 한국형 도심항공교통(UAM) 주도권을 두고 경쟁 중인 통신업계가 정부 주관 실증사업을 통해 정면 승부에 나선다. 통신사부터 …</div>
+                <div>아시아경제</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
