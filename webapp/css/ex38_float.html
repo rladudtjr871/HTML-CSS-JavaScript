@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        span:nth-child(1) { 
+            color: tomato;
+            float: right;
+             /* 창 크기에 따라 라인이 달라지면 다른 라인에 float이 된다. */           
+        }
+        span:nth-child(2) { 
+            color: gold;
+            float: right; 
+        }
+        span:nth-child(3) {
+            color: cornflowerblue;
+            float: right;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            /* display: inline-block; */
+            float: left; /* 요소들이 인라인의 성질을 가지게 된다. */
+        }
+        
+
+        #box1 {
+            background-color: red;
+        }
+
+        #box2{
+            background-color: orange;
+        }
+
+        #box3 {
+            background-color: yellow;
+        }
+
+        #box4 {
+            background-color: green;
+        }
+
+        #box5 {
+            background-color: blue;
+        }
+
+        #box6 {
+            background-color: indigo;
+        }
+
+        #box7 {
+            background-color: purple;
+        }
+
+        /* #list {
+            font-size: 0px;
+        }
+
+        #list > .box {
+            font-size: 1rem;
+        } */
+
+
+        /* <div style="clear: both;"></div> 와 같은 역할 */
+        #list::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        #list {
+            border: 1px solid black;
+            width: 700px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ex38_float.html -->
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quis aspernatur <span>fugiat</span> libero atque iste nesciunt aut! Modi voluptatibus <span>libero</span> ducimus! Voluptate <span>facere</span> illo accusamus recusandae exercitationem. Voluptate tempore, magnam, modi error ullam sapiente iure ducimus, blanditiis saepe repudiandae dignissimos qui eligendi reiciendi doloribus possimus quia! Inventore laboriosam facilis ipsa.</p>
+
+    <hr>
+    
+    <!-- 이렇게 같은 태그가 반복될 때 부모로 묶으면 조작이 훨씬 쉽다. -->
+    <div id="list">
+        <!-- 각 div 사이의 빈공간은 개행으로 인해 생긴 공간인다. -->
+        <div id="box1" class="box">빨</div>
+        <div id="box2" class="box">주</div>
+        <div id="box3" class="box">노</div>
+        <div id="box4" class="box">초</div>
+        <div id="box5" class="box">파</div>
+        <div id="box6" class="box">남</div>
+        <div id="box7" class="box">보</div>        
+    </div>
+
+    <h1>다른 내용들..</h1>
+
+</body>
+</html>
