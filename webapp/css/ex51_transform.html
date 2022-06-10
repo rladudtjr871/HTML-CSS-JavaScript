@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #mainmenu > img, #footmenu > img {
+            transition: 0.7s all;
+        }
+
+
+
+        #mainmenu {
+            border: 0px solid black;
+            /* font-size: 0px; */
+            width: 630px;
+            margin: 0px auto;
+
+            transform: translate(0px, -100px);            
+        }
+
+        #mainmenu > img {
+            /* float을 쓰면 부모에게서 가출한 것처럼 나온다. */
+            float: left;
+        }
+
+        /* #mainmenu:hover {
+            transform: translate(0px, -10px);
+        } */
+
+        #mainmenu > img:hover {
+            transform: translate(0px, 90px);
+        }
+
+        #mainmenu::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+
+
+
+
+        #footmenu {
+            border: 0px solid black;
+            /* font-size: 0px; */
+            width: 630px;
+            /* margin: 0px auto; */
+
+            position: fixed;        
+            /* left: 0px; */
+            /* right: 0px; */
+            /* 50%는 가운데지만 왼쪽 끝이 가운데에 맞춰지므로
+               calc()함수를 이용해 부모의 630에서 315만큼을 (-) 이동하여 중앙에 맞출 수 있다. */
+            left: calc(50% - 315px);
+
+            /* bottom: -100px; */
+            bottom: 0;
+            transform: translate(0px, 100px);
+        }
+
+        #footmenu > img {
+            float: left;
+        }
+
+        /* #mainmenu:hover {
+            transform: translate(0px, -10px);
+        } */
+
+        #footmenu > img:hover {
+            transform: translate(0px, -90px);
+        }
+
+        #footmenu::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ex51_transform.html -->
+    <nav id="mainmenu">
+        <!-- img[src=images/rect_icon0$.png]*5 -->
+        <img src="images/rect_icon01.png" alt="">
+        <img src="images/rect_icon02.png" alt="">
+        <img src="images/rect_icon03.png" alt="">
+        <img src="images/rect_icon04.png" alt="">
+        <img src="images/rect_icon05.png" alt="">
+    </nav>
+
+
+    <nav id="footmenu">
+        <!-- img[src=images/rect_icon0$.png]*5 -->
+        <img src="images/rect_icon01.png" alt="">
+        <img src="images/rect_icon02.png" alt="">
+        <img src="images/rect_icon03.png" alt="">
+        <img src="images/rect_icon04.png" alt="">
+        <img src="images/rect_icon05.png" alt="">
+    </nav>
+
+</body>
+</html>
