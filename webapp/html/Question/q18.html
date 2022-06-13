@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            height: 1484px;
+            width: 752px;
+            margin: 8px;
+        }
+
+        .minbox {
+            border: 1px solid black;
+            width: 1400px;
+            height: 149px;
+        }
+
+        .allball {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 70px;
+            font-weight: bold;
+            
+            transform: translate(0, 48px) rotate(0);
+        }
+
+        #ball01 {
+            transition: 6.5s all;
+            background-color: red;
+        }
+
+        #box:hover #ball01 {
+            transform: translate(1300px , 48px) rotate(3600deg);
+        }
+
+        #ball02 {
+            transition: 3s all;
+            background-color: gold;
+        }
+
+        #box:hover #ball02 {
+            transform: translate(1300px , 48px) rotate(4320deg);
+        }
+
+        #ball03 {
+            transition: 4s all;
+            background-color: orange;
+        }
+
+        #box:hover #ball03 {
+            transform: translate(1300px , 48px) rotate(2880deg);
+        }
+
+        #ball04 {
+            transition: 7s all;
+            background-color: greenyellow;
+        }
+
+        #box:hover #ball04 {
+            transform: translate(1300px , 48px) rotate(3240deg);
+        }
+
+        #ball05 {
+            transition: 4s all;
+            background-color: blue;
+        }
+
+        #box:hover #ball05 {
+            transform: translate(1300px , 48px) rotate(3600deg);
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- ball -->
+    <div id="box">
+        <div class="minbox">
+            <div id="ball01" class="allball">A</div>
+        </div>
+
+        <div class="minbox" >
+            <div id="ball02" class="allball">B</div>
+        </div>
+
+        <div class="minbox">
+            <div id="ball03" class="allball">C</div>
+        </div>
+
+        <div class="minbox">
+            <div id="ball04" class="allball">D</div>
+        </div>
+
+        <div class="minbox">
+            <div id="ball05" class="allball">E</div>
+        </div>
+    </div>
+
+
+</body>
+</html>
