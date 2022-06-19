@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .item {
+            border: 1px solid #CCC;
+            background-color: #EEE;
+            padding: 10px;
+            width: 400px;
+            text-align: center;
+            margin: 15px;
+        }
+
+        .item > input[type=button] {
+            border: 1px solid #CCC;
+            background-color: white;
+            width: 100px;
+            height: 60px;
+            margin: 10px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ex24_event.html -->
+
+    <h1>다량의 요소의 이벤트 처리</h1>
+
+    <form name="form1">
+        
+        <!-- <div class="item">
+            <input type="button" name="btnRed" value="빨강">
+            <input type="button" name="btnYellow" value="노랑">
+            <input type="button" name="btnBlue" value="파랑">
+        </div> -->
+
+        <!-- case 1. -->
+        <div class="item">
+            <input type="button" name="btnRed" value="빨강" onclick="m1();">
+            <input type="button" name="btnYellow" value="노랑" onclick="m2();">
+            <input type="button" name="btnBlue" value="파랑" onclick="m3();">
+        </div>
+
+        <!-- case 2. -->
+        <div class="item">
+            <input type="button" name="btnRed2" value="빨강">
+            <input type="button" name="btnYellow2" value="노랑">
+            <input type="button" name="btnBlue2" value="파랑">
+        </div>
+
+        <!-- case 3. -->
+        <div class="item">
+            <input type="button" name="btnRed" value="빨강" onclick="m7('red');">
+            <input type="button" name="btnYellow" value="노랑" onclick="m7('yellow');">
+            <input type="button" name="btnBlue" value="파랑" onclick="m7('blue');">
+        </div>
+        
+        <!-- case 4. -->
+        <div class="item">
+            <input type="button" name="btnRed" value="빨강" onclick="m8(this);">
+            <input type="button" name="btnYellow" value="노랑" onclick="m8(this);">
+            <input type="button" name="btnBlue" value="파랑" onclick="m8(this);">
+        </div>
+
+        <!-- case 5. -->
+        <div class="item">
+            <input type="button" name="btnRed" value="red" onclick="m9(this);">
+            <input type="button" name="btnYellow" value="yellow" onclick="m9(this);">
+            <input type="button" name="btnBlue" value="blue" onclick="m9(this);">
+        </div>
+
+        <!-- case 6. -->
+        <!-- data-color는 개발자가 임의로 설정한 속성 > 브라우저는 인식은하지만 신경 안씀 -->
+        <div class="item">
+            <input type="button" name="btnRed" value="빨강" onclick="m10(this);" data-color="red">
+            <input type="button" name="btnYellow" value="노랑" onclick="m10(this);" data-color="yellow">
+            <input type="button" name="btnBlue" value="파랑" onclick="m10(this);" data-color="blue">
+        </div>
+
+        <!-- case 7. -->
+        <div class="item">
+            <input type="button" name="btnRed" value="빨강" onclick="m11();" data-color="red">
+            <input type="button" name="btnYellow" value="노랑" onclick="m11();" data-color="yellow">
+            <input type="button" name="btnBlue" value="파랑" onclick="m11();" data-color="blue">
+        </div>
+
+        <!-- case 8. -->
+        <div class="item">
+            <input type="button" name="btnRed3" value="빨강" data-color="red">
+            <input type="button" name="btnYellow3" value="노랑" data-color="yellow">
+            <input type="button" name="btnBlue3" value="파랑" data-color="blue">
+        </div>
+
+        <!-- case 9. -->
+        <div class="item">
+            <input type="button" name="btn" value="빨강" data-color="red">
+            <input type="button" name="btn" value="노랑" data-color="yellow">
+            <input type="button" name="btn" value="파랑" data-color="blue">
+        </div>
+
+
+        <!-- 라디오버튼에서는 name이 그룹 역할을 해준다. -->
+        <!-- case 9.에서는 원래는 저렇게 안하지만 자바스크립트에서 사용을 위해 저렇게 함 -->
+        <input type="radio" name="rb">
+        <input type="radio" name="rb">
+        <input type="radio" name="rb">
+
+
+
+        <!-- case 10. -->
+        <div class="cat">
+            <img src="images/catty01.png" name="cat">
+            <img src="images/catty02.png" name="cat">
+            <img src="images/catty03.png" name="cat">
+            <img src="images/catty04.png" name="cat">
+            <img src="images/catty05.png" name="cat">
+        </div>
+
+        <!-- case 11. -->
+        <div class="item">
+            <input type="button" name="btn2" value="빨강" data-color="red">
+            <input type="button" name="btn2" value="노랑" data-color="yellow">
+            <input type="button" name="btn2" value="파랑" data-color="blue">
+        </div>
+
+    </form>
+
+
+    <script>
+
+
+        //case 1.
+        function m1() {
+            document.body.bgColor = 'red';
+        }
+
+        function m2() {
+            document.body.bgColor = 'yellow';
+        }
+
+        function m3() {
+            document.body.bgColor = 'blue';
+        }
+        
+    
+        //case. 2
+        document.form1.btnRed2.onclick = m4;
+        document.form1.btnYellow2.onclick = m5;
+        document.form1.btnBlue2.onclick = m6;
+        
+
+        function m4() {
+            document.body.bgColor = 'red';
+        }
+
+        function m5() {
+            document.body.bgColor = 'yellow';
+        }
+
+        function m6() {
+            document.body.bgColor = 'blue';
+        }
+
+
+        //case 3.
+        function m7(color) {
+            document.body.bgColor = color;
+        }
+
+
+        //case 4.
+        function m8(btn) {
+            //alert(btn.name);
+            if (btn.name == 'btnRed') {
+                color = 'red';
+            } else if (btn.name == 'btnYellow') {
+                color = 'yellow';
+            } else if (btn.name == 'btnBlue') {
+                color = 'blue';
+            }
+
+            document.body.bgColor = color;
+        }
+
+
+        //case 5.
+        function m9(btn) {
+            //name=btnRed
+            //document.body.bgColor = btn.value; //value을 영어로 바꿔가면서 쓰는건 좋지 않은 방법
+
+            //document.body.bgColor = btn.name.substr(3); //안정성이 떨어지는 방법 > 가독성도 떨어진다.
+        }
+
+
+        //case 6.
+        function m10(btn) {
+
+            //사용자가 임의로 정한 data-가 붙은 속성을 사용
+            //<tag data-color="value">
+            alert(btn.dataset['color']);
+
+            document.body.bgColor = btn.dataset['color'];
+        }
+
+
+        //case 7.
+        function m11(evt) {
+            
+            // this 없이
+
+            //event 객체 얻어오는 법
+            //1. event
+            //2. 매개변수
+
+            //event.keyCode
+            //evt.keyCode
+
+            //srcElement > 이벤트가 일어난 당사자
+            //alert(event.srcElement);
+            //alert(evt.target);
+
+            //이벤트를 발생시킨 객체 참조 > m11(this)
+            // alert(event.srcElement);
+            // alert(event.target);
+
+            //alert(event.target.dataset['color']);
+
+            document.body.bgColor = event.target.dataset['color'];
+
+        }
+
+
+        //case 8.
+        document.form1.btnRed3.onclick = m12;
+        document.form1.btnYellow3.onclick = m12;
+        document.form1.btnBlue3.onclick = m12;
+
+        function m12() {
+
+            //태그에서 진행했을 땐 값을 받아오는게 가능했지만 > 이 방법은 값을 받아오려면 event 객체를 통해서만 알아올 수 있다.
+
+            document.body.bgColor = event.target.dataset['color'];
+
+        }
+
+        
+        //case 9.
+        //태그 name이 동일한 객체가 2개 이상이면 > 배열
+        //alert(document.form1.btn.length);
+        for (var i=0; i<document.form1.btn.length; i++) {
+            document.form1.btn[i].onclick = m13;
+        }
+
+        function m13() {
+            document.body.bgColor = event.target.dataset['color'];
+        }
+
+
+        
+        //alert(document.images.length); //img 개수
+        //alert(document.images['cat'].length); //안됨
+
+        //case 10.
+        for (var i=0; i<document.images.length; i++) { //모든 img를 돌리는 for문
+            if (document.images[i].name == 'cat') { //그 중 name이 'cat'인 img
+                document.images[i].onclick = m14;
+            }
+        }
+
+        function m14() {
+            //alert(event.target.src);
+            if (event.target.width == 128) {
+                event.target.width = 300;
+            } else {
+                event.target.width = 128;
+            }
+            
+        }
+
+
+        //case 11.
+        for (var i=0; i<document.form1.btn2.length; i++) {
+
+            document.form1.btn2[i].onmouseover = m15;
+            document.form1.btn2[i].onmouseout = m15;
+            document.form1.btn2[i].onclick = m15;
+
+        }
+
+        //하나의 이벤트 + 수많은 태그
+        //수많은 이벤트 + 수많은 태그
+        function m15() {
+            //수많은 태그 > 어떤 태그 > event.target
+            //수많은 태그 > 어떤 이벤트 > event.type
+            //alert(event.type);
+
+            if (event.type == 'mouseover') {
+                document.body.bgColor = event.target.dataset['color'];
+            } else if (event.type == 'click') {
+                document.body.bgColor = 'black';
+            } else if (event.type == 'mouseout') {
+                document.body.bgColor = 'white';
+            }
+            
+
+        }
+
+
+        
+    </script>
+
+</body>
+</html>
