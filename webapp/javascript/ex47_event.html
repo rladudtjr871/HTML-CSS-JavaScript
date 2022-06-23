@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .box {
+            padding: 60px;
+        }
+
+        #p1 { background-color: tomato; }
+        #p2 { background-color: gold; }
+        #p3 { background-color: cornflowerblue; }
+
+
+        #tbl2 td {
+            width: 126px;
+            height: 126px;
+            padding: 0;
+        }
+
+        #tbl2 td img {
+            display: block;
+        }
+
+
+
+    </style>
+</head>
+<body /*onclick="alert('body')"*/>
+    <!-- ex47_event.html -->
+
+    <div id="p1" class="box">
+        <div id="p2" class="box">
+            <div id="p3" class="box"></div>
+        </div>
+    </div>
+
+    <h1>테이블</h1>
+
+    <table class="table" id="tbl1">
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+    </table>
+
+
+    <h1>테이블</h1>
+
+    <table class="table" id="tbl2">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <br><br><br><br><br><br><br>
+    <script>
+
+        //이벤트 버블링(Event Bubbling) vs {이벤트 터널링(Event Tunneling) == 이벤트 캡쳐링(Event Capturing)}
+
+        //이벤트 터널링 > 어떤 이벤트가 컨트롤 하위로 전달되는 것 > 이벤트 터널링(캡쳐링)
+
+        //이벤트 버블링 > 어떤 이벤트가 컨트롤 상위로 전달되는 것 > 이벤트 버블링
+
+
+        const p1 = document.getElementById('p1');
+        const p2 = document.getElementById('p2');
+        const p3 = document.getElementById('p3');
+
+        
+        //빨강 영역 안에 노랑, 파랑이 포함되어 있어 노랑 파랑을 눌러도 알림창이 뜸
+
+        //부모와 자식 간에 동일한 이벤트를 추가하는 경우 > 버블링의 발생은 자식(밑)에서부터 부모(위)로 발생
+
+        //****** JavaScript는 기본적으로 이벤트 버블링을 지원한다.
+
+        // BOM Event > 이벤트 버블링
+
+        
+
+        p1.onclick = function(event) {
+            alert('빨강');
+
+            // event.cancelBubble = true;
+        };
+        
+
+        p2.onclick = function(event) {
+            alert('노랑');
+
+            // event.cancelBubble = true;
+        };
+
+
+        p3.onclick = function(event) {
+            alert('파랑');
+
+            //이벤트 버블링을 여기서 중단해라!!! > 캔슬 버블은 자주하는 행위는 아니다..
+            // event.cancelBubble = true;
+        };
+
+        
+
+        //DOM Event > 이벤트 버블링 or 이벤트 캡쳐링
+        // p1.addEventListener('click', function() {
+        //     alert('빨강');
+        // }, true);
+
+        // p2.addEventListener('click', function() {
+        //     alert('노랑');
+        // }, true);
+
+        // p3.addEventListener('click', function() {
+        //     alert('파랑');
+        // }, true);
+
+
+        // p1.addEventListener('click', function() {
+        //     alert('red');
+        // });
+
+        // p2.addEventListener('click', function() {
+        //     alert('yellow');
+        // });
+
+        // p3.addEventListener('click', function() {
+        //     alert('blue');
+        // });
+
+        //이벤트 터널링 -> 이벤트 버블링(캡쳐링)
+        //빨강 > 노랑 > 파랑 > red > yellow > blue 순서로 터널링 발생하고 턴해서 버블링 발생
+
+
+
+        
+        //Hover Table
+        //<td> or <tr> -> 이벤트 매핑
+
+        //1. <tr>
+        //2. <table> -> <tr>
+
+        const table = document.getElementsByClassName('table')[0];
+
+        // alert(table.id);
+
+        const row = table.firstElementChild.children; //table.tbody.tr
+
+        // alert(row.length);
+
+
+        //var이 아닌 let으로 해야하는 이유
+        // > 일단 for문 안에 있으므로 var은 전역변수(함수 안이 아니므로)
+        // > 전역변수인 i 값은  row[i].bgColor = 'gold'; 해당 구문이 이벤트가 발생했을 때 i값을 받으므로
+        // > 전역변수인 i는 for문에서 루프를 돌아 10이되어 위 구문에서 중간 값을 얻을 수 없다.
+        // > 따라서 원하는 이벤트인 onmouseover가 일어나도 i값 떄문에 원하는대로 일어나지 않는다.
+        for(let i=0; i<row.length; i++) {
+
+            //이벤트를 건 당사자 != event.target
+            //(이벤트 당사자에게 이벤트가 걸리는게 보통의 경우지만 이처럼 아닌 경우도 있다.)
+            row[i].onmouseover = function(event) { //row인 tr에 걸리는게 아니라 td에 걸림
+                // row[i].bgColor = 'gold';
+                // event.srcElement.bgColor = 'gold'; //(MS 비표준)
+                // event.target.bgColor = 'gold';
+                //마우스가 위치하는 위치에 이벤트가 걸린다. 즉 event.target이 td에 걸리게된다.
+                //이벤트 터널링 > 이벤트 버블링으로의 전환(event.target)이 td에서 발생
+
+                //target이 td에 잡히므로 원래 목적인 tr에는 parentElement를 써서 이벤트를 건다.
+                // event.target.parentElement.bgColor = 'gold';
+                event.currentTarget.bgColor = 'gold'; //이벤트를 발생시킨 태그 자체를 반환(currentTarget)
+
+
+                //target은 이벤트가 발생한 바로 그 요소를 직접 가리키고 > td
+                //currentTarget은 이벤트 리스너(EventListener)를 가진 요소 > tr
+            };
+
+            row[i].onmouseout  = function(event) {
+               event.currentTarget.bgColor = 'transparent';
+            };
+
+        }
+
+
+
+
+        const tbl2 = document.getElementById('tbl2');
+
+        const trlist = tbl2.firstElementChild.children; //tr
+
+        for (let i=0; i<trlist.length; i++) {
+
+            const tdlist = trlist[i].children; //i번쨰 tr의 td
+
+            for (let j=0; j<tdlist.length; j++) {
+
+                tdlist[j].addEventListener('mousedown', function(event) {
+
+                    // alert(event.target.nodeName);
+
+                    if (event.buttons == 1) {
+
+                        if (event.target.nodeName == 'TD') { //nodeName 태그명
+
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon01.png');
+                            event.target.appendChild(img);
+                        } else { //이미지가 이미 있을 경우
+                            
+                            //기존 이미지 제거
+                            let td = event.target.parentElement;
+
+                            //자식은 부모가 지워야한다
+                            event.target.parentElement.removeChild(event.target);
+
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon01.png');
+
+                            td.appendChild(img);
+                        }
+
+                    } else if (event.buttons == 2) {
+
+                        if (event.target.nodeName == 'TD') {
+
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon02.png');
+                            event.target.appendChild(img);
+                        } else { //이미지가 이미 있을 경우
+                            //기존 이미지 제거
+                            let td = event.target.parentElement;
+
+                            //자식은 부모가 지워야한다
+                            event.target.parentElement.removeChild(event.target);
+
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon02.png');
+
+                            td.appendChild(img);
+                        }
+
+                        
+
+                        
+
+                    } else if (event.buttons == 4) {
+
+                        //삭제
+                        event.target.parentElement.removeChild(event.target);
+                        
+
+                    }
+
+                });
+            }
+
+        }
+
+
+        //<body oncontextmenu="return false">
+        window.oncontextmenu = function() {
+            return false;
+        }
+
+
+
+    </script>
+</body>
+</html>
