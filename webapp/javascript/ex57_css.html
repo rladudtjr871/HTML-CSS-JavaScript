@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #box {
+            width: 250px;
+            height: 188px;
+            border: 10px solid cornflowerblue;
+            overflow: hidden;
+            
+        }
+
+        #list {
+            width: 1250px;
+            display: flex;
+            /* outline: 5px solid black; */
+            transition: .7s all;
+        }
+        
+        #family {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #family tr:nth-child(1) td:nth-child(1) {
+            width: 500px;
+            height: 400px;
+            /* border: 10px solid blue; */
+            /* overflow: hidden; */
+            /* 테이블 자체는 오버플로우 발생 없이 테이블이 커진다. 그래서 hidden도 안 먹는다 */
+            
+        }
+
+        #family tr:nth-child(1) td:nth-child(1) div {
+            width: 500px;
+            height: 400px;
+            border: 1px solid black;
+            overflow: hidden;
+            /* img의 부모가 div이기 때문에 이건 가능 > 결론 : 테이블만으로는 이미지 오버플로우를 컨트롤 못한다. 그래서 div로 img를 한번더 감싼다. */
+            
+        }
+
+        
+        #family input[type=range] {
+            margin: 20px 0;
+            width: 500px;
+            
+        }
+        
+        
+        #family #vslide {
+            transform: rotate(90deg);
+            width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ex57_css.html -->
+
+    <h1>고양이</h1>
+
+    <div id="box">
+        <div id="list">
+            <img src="images/cat01.jpg">
+            <img src="images/cat02.jpg">
+            <img src="images/cat03.jpg">
+            <img src="images/cat04.jpg">
+            <img src="images/cat05.jpg">
+        </div>
+    </div>
+
+    <hr>
+    <select id="sel">
+        <option value="1">고양이1</option>
+        <option value="2">고양이2</option>
+        <option value="3">고양이3</option>
+        <option value="4">고양이4</option>
+        <option value="5">고양이5</option>
+    </select>
+
+    <hr>
+    <input type="range" id="range" min="0" max="4" value="0" style="width: 300px;">
+
+
+    <h1>Donald Duck</h1>
+
+    <table id="family">
+        <tr>
+            <td><div><img src="images/donaldduck.jpg" id="donald"></div></td>
+            <td><input type="range" id="vslide"></td>
+        </tr>
+        <tr>
+            <td><input type="range" id="hslide"></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+    
+
+
+    <script>
+
+        const box = document.getElementById('box');
+        const list = document.getElementById('list');
+        const sel = document.getElementById('sel');
+        const range = document.getElementById('range');
+
+        let dist = 0;
+
+        box.onclick = function () {
+            dist += 250;
+            list.style.transform = `translate(-${dist}px, 0px)`;
+        };
+
+        
+        //본인의 값이 바뀔 때 발생하는 이벤트
+        sel.onchange = function() {
+            // alert(sel.value);
+            // dist = (sel.value -1) * 250;
+            dist = sel.selectedIndex * 250;
+            list.style.transform = `translate(-${dist}px, 0px)`;
+        }
+
+
+        range.onchange = function() {
+            dist = range.value * 250;
+            list.style.transform = list.style.transform = `translate(-${dist}px, 0px)`;
+        }
+
+
+
+
+
+        const donald = document.getElementById('donald');
+        const vslide = document.getElementById('vslide');
+        const hslide = document.getElementById('hslide');
+
+
+        // setTimeout(function() {
+        //     alert(donald.width); //이미지를 다운 받는 시간보다 명령어 실행하는데걸리는 시간이 더 빨라서 width값을 못 가져온다. 이처럼 1초 딜레이를 걸어보면 정삭적으로 나오는걸 볼 수 있다. > 이는 이미지 다운에 시간이 걸린다는걸 증명
+        // }, 1000); //인터넷 속도에 따라 달라서 이건 불안정한 방법
+
+        donald.onload = function() {
+        //    alert(donald.width);
+
+            hslide.min = 0;
+            hslide.max = donald.width - 500;
+            hslide.value = 0;
+
+            vslide.min = 0;
+            vslide.max = donald.height - 400;
+            vslide.value = 0;
+
+        };
+
+        // onchange > 입력이 끝나야 이벤트 발생 > range에 클릭을 떼어야 이벤트 발생, 마우스 누른채로 불가능
+        // oninput > 입력과 동시에 실시간 발생 > 실시간 발생, 마우스 누른채로 가능
+        hslide.oninput = function() {
+            donald.style.transform = `translate(-${hslide.value}px, -${vslide.value}px)`;
+        };
+
+        vslide.oninput = function() {
+            donald.style.transform = `translate(-${hslide.value}px, -${vslide.value}px)`;
+        };
+
+
+        // const dlist = window.getComputedStyle(donald);
+        // alert(dlist.getPropertyValue('width'));
+
+        
+
+
+        
+
+
+    </script>
+</body>
+</html>

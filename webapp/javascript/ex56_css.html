@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #menu {
+            /* border: 1px solid black; */
+            display: flex;
+            width: 630px;
+
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            margin: 0 auto;
+
+            transform: translate(0px, -100px);
+
+        }
+
+        #menu img {
+            transition: .5s all;
+        }
+
+
+        main {
+            width: 800px;
+            margin: 100px auto;
+        }        
+
+    </style>
+
+    <script>
+
+        // const item = document.getElementById('menu').children;
+        // alert(item);
+
+        
+        //<body onload="">
+        //- <body> 태그가 브라우저에 의해서 실행되고 난 직후
+        function init() {
+            const item = document.getElementById('menu').children;
+            alert(item);
+        }
+
+        // window.onload = function() {};
+        // window.document.onload = function() {};
+        // window.document.body.onload = function() {};
+
+        let olditem = null;
+
+
+        window.onload = function() {
+
+            const item = document.getElementById('menu').children;
+            
+            for (let i=0; i<item.length; i++) {
+
+                item[i].onclick = function(event) {
+
+                    if (olditem != null) { //누군가 열려있다면?
+                        olditem.style.transform = 'translate(0px, 0px)';
+                    }
+
+                    if (event.target != olditem) { //이벤트 대상이 olditem이 아니면?
+                        event.target.style.transform = 'translate(0px, 90px)';
+                        olditem = event.target;
+                    } else { //이벤트 대상이 olditem이면?
+                        event.target.style.transform = 'translate(0px, 0px);'
+                        olditem = null;
+                    }
+
+                };
+
+            }
+        };
+
+
+    </script>
+
+</head>
+<body>
+    <!-- ex56_css.html -->
+
+    <nav id="menu">
+        <img src="images/rect_icon01.png">
+        <img src="images/rect_icon02.png">
+        <img src="images/rect_icon03.png">
+        <img src="images/rect_icon04.png">
+        <img src="images/rect_icon05.png">
+    </nav>
+
+    
+    <main>
+        <h1>Title</h1>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt illo minima dolores! Qui neque incidunt aperiam. Consectetur explicabo est libero placeat, modi, at nihil cum quo magni et reprehenderit necessitatibus.
+        </p>
+        <p>
+            Inventore magnam ullam ea a. Labore, enim ratione mollitia quas voluptatibus tenetur, dolorum exercitationem quisquam, aspernatur ipsa illo. Ducimus placeat similique architecto ut esse quisquam voluptatem quos earum harum molestias.
+        </p>
+        <p>
+            Suscipit ipsum ducimus natus cum dolorem modi debitis praesentium facilis obcaecati dolorum officia eligendi assumenda, corrupti delectus aspernatur reiciendis provident nulla est? Blanditiis ipsum cumque distinctio debitis nam ratione laborum!
+        </p>
+        <p>
+            Placeat assumenda earum quo nostrum optio ducimus mollitia, ad ut nesciunt asperiores incidunt, cumque et iusto ab architecto provident, necessitatibus quas tempora veritatis culpa! Necessitatibus maiores in mollitia consequatur nobis!
+        </p>
+        <p>
+            Esse in repellat tempore optio, possimus fugiat placeat recusandae assumenda harum ad debitis nulla quod. Animi sint vitae porro magni illum eius, optio aspernatur fuga quam in modi quasi quis.
+        </p>
+        <p>
+            Excepturi sed quisquam rem sunt possimus ullam omnis odit ipsa fuga placeat illum, mollitia numquam assumenda dicta neque temporibus et? Vitae expedita possimus sint, incidunt doloribus nulla excepturi ipsam eos.
+        </p>
+        <p>
+            Ipsam commodi amet nesciunt magni nulla numquam rem maxime debitis, alias non neque incidunt, ea quam, sit assumenda nostrum! Unde sequi corrupti magni quis. Libero quidem suscipit sit neque vel!
+        </p>
+        <p>
+            Molestias ad non saepe dolor possimus quos ducimus nulla. Quasi ipsum iusto fugiat minima, perspiciatis perferendis, quo rem quod optio ad error! Enim ratione voluptates rerum, assumenda magnam cupiditate atque!
+        </p>
+        <p>
+            Optio impedit ex vel mollitia dolore itaque, cupiditate laboriosam odio ipsam modi eveniet id facilis aspernatur laborum corrupti perferendis numquam dolor iure repellat in odit. Omnis quasi sit animi. Voluptates!
+        </p>
+        <p>
+            Unde animi magni ex eius in consequuntur dolorum aperiam, voluptatum hic maxime ipsam qui voluptas tempore odio minima nisi excepturi, facilis quo nostrum tempora quis. Mollitia quod porro commodi aliquam.
+        </p>
+    </main>
+
+    
+</body>
+</html>
