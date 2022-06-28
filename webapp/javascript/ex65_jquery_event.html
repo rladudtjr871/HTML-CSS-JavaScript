@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <!-- ex65_jquery_event.html -->
+
+    <h1>jQuery Event</h1>
+
+    <input type="button" value="버튼1" id="btn1" class="btn">
+    <input type="button" value="버튼2" id="btn2" class="btn">
+    <input type="button" value="버튼3" id="btn3" class="btn">
+    <input type="button" value="버튼4" id="btn4" class="btn">
+    <input type="button" value="버튼5" id="btn5" class="btn">
+
+
+    <script>
+
+        //순수한 JavaScript > Vanilla JS
+        //jQuery
+
+
+        //1. BOM
+        //<input onclick="">
+        //btn.onclick = function() {}
+
+        //2. DOM
+        //btn.addEventListener()
+
+        //3.jQuery
+        //- 이벤트 함수
+
+
+        /*
+
+            jQuery 기능
+            - 모든 기능이 메소드(함수)로 제공된다.
+            - 프로퍼티가 없다.(변수가)
+
+
+            jQuery 함수 형태
+            1. 전용 함수 > 하는 일이 하나에 국한된 것 > 인자가 없으면 전용함수면서 읽기일 확률 ^
+                a. obj.test()          //getter, 읽기
+                b. obj.test(peram)     //setter, 쓰기
+
+            2. 범용 함수
+                a. obj.test(param)        //getter, 읽기
+                b. obj.test(param, param) //setter, 쓰기
+
+
+        */
+
+        //btn1.value = '쓰기'
+        //alert(btn1.value)
+
+        // jQuery('#btn1').val('쓰기'); //읽기(get)
+        // alert(jQuery('#btn1').val()); //쓰기(set) > 읽기와 쓰기 메소드 이름이 같다.
+
+
+        // jQuery('#btn1').css('color', 'red'); //쓰기 > 범용 함수 > 인자값이 두개 필요함 > 2.b
+        // alert(jQuery('#btn1').css('color')); //읽기
+
+
+        
+        //jQuery 이벤트 함수
+        //1. 전용 이벤트 함수
+            // - 객체.이벤트함수(콜백함수)
+        //2. 범용 이벤트 함수
+            // - 객체.on(이벤트명, 콜백함수)
+
+        
+        // $('#btn1').click(function() {
+        //     alert('버튼1');
+        // });
+
+
+        //btn2.addEventListener('click'm finction() {});
+
+        // $('#btn2').on('click',function() {
+        //     alert('버튼2');
+        // });
+
+
+        
+        $('.btn').click(function(Event) {
+
+            //이벤트 주체?
+            // alert(event.target.value);
+            // alert(this); //this는 좀 불안한 아이..
+            // alert(event.target === this);
+
+            //alert(this);
+            // this.value = '클릭';
+
+            $(this).val('클릭');
+
+        });
+
+
+
+
+        // document.getElementById('btn1').onclick = function(event) {
+        //     // event.target.value = '클릭';
+        //     this.value = 'Click';
+        // }
+
+
+        // document.getElementById('btn1').onclick = event => {
+        //     //event.target.value = '클릭';
+        //     // this.value = 'click';
+        //     alert(window == this); //여기서 this는 window.. > this의 의미가 그떄그떄 달라서 조심해서 써야함..
+        //     alert(this);
+        // }
+
+
+
+
+    </script>
+
+</body>
+</html>
