@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <!-- ex64_jquery_selector.html -->
+
+    <h1>jQuery() 함수</h1>
+
+    <input type="button" value="확인" id="btn" name="btn">
+    <hr></hr>
+    <div id="box1" class="box">상자1</div>
+    <div id="box2" class="box">상자2</div>
+    <div id="box3" class="box">상자3</div>
+    <div id="box4" class="box">상자4</div>
+    <div id="box5" class="box">상자5</div>
+
+
+    <script>
+
+        /*
+        
+            jQuery() 함수
+            - CSS 선택자 or 다른 표현을 사용해서 태그를 검색 후 반환한다.
+            - (일종의) 형변환을 하거나 태그를 생성해서 반환한다.
+            1. 태그를 검색해서 반환한다.
+            2. BOM or DOM 객체를 jQuery 객체로 변환한다.
+            3. jQuery()함수의 결과는 jQuery 객체(= 항상 집합)
+            4. 반환된 jQuery 객체에 메소드를 적용하면.. 자동으로 루프가 동작되면서 요소마다 적용된다.
+                    
+        */
+
+        const btn = document.getElementById('btn');
+        
+        btn.addEventListener('click', function() {
+
+            //상자 x 5 > CSS 조작
+            const list = document.getElementsByClassName('box');
+
+            for (let i=0; i<list.length; i++) {
+                list[i].style.color = 'blue';
+            }
+
+            // document.getElementsByClassName('box').forEach(box => box.style.color = 'blue');
+
+            // document.querySelector(CSS선택자)
+            // document.querySelectorAll(CSS선택자)
+
+            document.querySelector('#box1').style.color = 'red';
+            document.querySelector('div').style.color = 'yellow'; //여러개일 경우 첫번쨰만 적용시킴
+
+            document.querySelectorAll('.box').forEach(box => box.style.color = 'orange');
+
+
+
+            //jQuery방법 > CSS 선택자 지원
+            //- jQuery 함수의 실행 결과는 jQuery 객체이다.
+
+            //태그 선택자
+            jQuery('div').css('color', 'green'); //for문이든 forEach든 루프를 도는 부분이 없다..? > 3, 4번 참고
+            
+            //class 선택자
+            jQuery('.box').css('font-size', '2em');
+
+            //id 선택자
+            jQuery('#box3').css('text-decoration', 'underline');
+
+            //****CSS 모든 선택자 지원!!
+            jQuery('div:nth-child(even)').css('font-weight', 'bold');
+
+
+
+            //jQuery와 BOM, DOM을 섞어서 못 쓴다
+            const a = document.all.btn; //BOM
+            const b = document.getElementById('btn'); //DOM
+            const c = jQuery('#btn'); //jQuery
+
+
+            // a.조작
+            // b.조작
+            // c.조작
+
+            // alert(a === b); //BOM / DOM 으로 찾은 값이 타입까지 아예 똑같다
+            // alert(a == c); //하지만 jQuery로 찾은건 다르다.
+            // alert(b == c);
+
+            // jQuery('#btn').value = 'check'; //이렇게 섞어서 쓰는게 불가능 > jQuery에는 value가 없다. > 오류가 안 생기는 이유는 value를 프로퍼티로 생각해서 오류가 안 난것 > 그러나 jQuery에는 value가 정의되어 있지 않다.
+            // document.getElementById('btn').css('color', 'blue'); //이게 가능한 이유도 jQuery에는 css가 정의되어 있어서이다.
+
+            
+            //BOM과 DOM을 섞어서 쓰는 것도 가능했다. > DOM.BOM
+            // document.getElementById('btn').value = 'aa'
+            // document.all.btn.setAttribute('value', 'aaa');
+
+
+
+            //형변환하면 같이 쓰는게 가능하다. > 사실상 같이 쓰는 느낌은 아니긴함..
+            //BOM/DOM 객체 -> (형변환) -> jQuery
+            jQuery(document.getElementById('btn')).css('color', 'blue');
+
+
+            //jQuery > (형변환) > BOM/DOM 객체
+            //[0]처럼 꺼내면 가능
+            jQuery('#btn')[0].value = 'Check';
+
+
+
+        });
+
+    </script>
+</body>
+</html>
