@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <!-- ex69_jquery_manipulation.html -->
+
+    <h1>jQuery 태그 조작</h1>
+
+    <input type="button" value="버튼1" id="btn1">
+    <hr>
+    <div id="box">상자</div>
+    <hr>
+    <input type="text" id="txt1">
+
+    <script>
+
+        $('#btn1').click(function() {
+
+            //콘텐츠 제작
+            //- innerText, textContent > text()
+            //- innerHTML > html()
+            //- value > val()
+
+            //전용함수 인자가 없으면 읽기
+            // alert($('#box').text());
+            //전용함수 인자가 하나 있으면 쓰기
+            // $('#box').text('홍길동입니다.');
+
+
+            // $('#box').html('<p>안녕하세요</b>');
+            // $('#box').html('<input type="text">');
+
+            //text기능을 가진 것들은 모두 val()를 통해 입출력한다.
+            // alert($('#txt1').val());
+            // $('#txt1').val('하하하');
+
+
+            
+            //속성 조작
+            //- obj.prop        > 읽기
+            //- obj.prop = 값;  > 쓰기
+            //- obj.getAttribute('prop')
+            //- obj.setAttribute('prop', value)
+
+
+            //HTML 속성을 조작하는 메소드
+            //- obj.attr('prop')
+            //- obj.attr('prop', value)
+
+            //JavaScript 프로퍼티를 조작하는 메소드
+            //- obj.prop('prop')
+            //- obj.prop('prop', value)
+
+            // $('#txt1').attr('size', 50);
+            // $('#txt1').prop('size', 50);
+
+
+            // $('#txt1')
+            //     .attr('size', 50)
+            //     .attr('maxlength', 10);
+
+
+            // $('#txt1').attr({
+            //     size: 50,
+            //     maxlength: 10
+            // });
+
+
+            //비권장;;; > 메소드 체이닝을 쓰려면 한가지 공통점을 가진 것들끼리 쓰는게 좋다
+            // $('#box')
+            //     .attr('title', '상자') //HTML 속성
+            //     .css('color', 'blue') //css
+            //     .text('Box') //text(pcdata)
+            //     .click(function() { //click event
+            //         alert('클릭');
+            //     });
+
+
+
+
+            //태그 추가
+            //box.innerHTML += 고양이
+            // $('#box').html('<img src="images/catty01.png">'); //이건 누적이 아님
+            // $('#box').html($('#box').html() + '<img src="images/catty01.png">');
+
+            // $('#box').append('<img src="images/catty01.png">');
+
+
+
+            n++
+
+            // $('#box').append(`<img src="images/catty0${n}.png">`);
+            // $('#box').prepend(`<img src="images/catty0${n}.png">`);
+
+            // $('#box')
+            // .append(`<img src="images/catty0${n}.png">`) //상자의 자식으로 이미지 추가 > 상자 객체 반환(메소드 체이닝)
+            // .css('border', '1px solid black'); //상자에 css 부여
+            
+
+            
+            // $('#box').append(
+            //     $(`<img src="images/catty0${n}.png">`) //$(jQuery)로 고양이 객체를 만들고 그 객체에 css속성을 부여
+            //     .css('border', '1px solid black')   //그 고양이를 box에 자식으로 추가
+            //     .click(function() {                 //고양이 클릭 이벤트 > this는 고양이 객체를 가리킴
+            //         alert(this.src);
+            //     })
+            // );
+
+            
+            //부모.append(자식)
+            // $('#box').append(`<img src="images/catty0${n}.png">`);
+            //자식.appendTo(부모)
+            // $(`<img src="images/catty0${n}.png">`).appendTo($('#box'));
+
+            //부모.prepend(자식)
+            // $('#box').prepend(`<img src="images/catty0${n}.png">`);
+            //자식.prependTo(부모)
+            // $(`<img src="images/catty0${n}.png">`).prependTo($('#box'));
+
+
+            //쫘라라라락 만들고 이걸 부모에 추가!!!
+            // $(`<img src="images/catty0${n}.png">`)
+            //     .css('border', '1px solid black')
+            //     .click(function() {
+            //         alert();
+            //     })
+            //     .appendTo($('#box'));
+
+
+            // $(document.body)
+            // $('#box').remove(); //jQuery는 스스로 지울 수 있다. > 이전에는 부모를 통해서만 지울 수 있었다.
+            $('input').remove();
+
+
+
+
+        });
+
+        let n = 0;
+
+    </script>
+
+</body>
+</html>
