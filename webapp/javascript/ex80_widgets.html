@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <style>
+
+        .slider {
+            margin: 30px;
+        }
+
+        .ui-slider .ui-slider-handle {
+            width: 0.7em;
+            height: 1.3em;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- ex80_widgets.html -->
+
+
+    <h1>Accordian</h1>
+
+    <div id="a1">
+        <h2>HTML</h2>
+        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse quisquam explicabo totam, dolor eaque earum laborum voluptatum ducimus? Quisquam nihil accusamus fugit molestiae ipsum inventore fuga delectus. Ad, deleniti impedit officia adipisci voluptatibus natus fugit! Hic quasi corporis quia rerum illum sequi, eligendi qui distinctio cum alias corrupti accusamus ipsum?</div>
+        <h2>CSS</h2>
+        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse quisquam explicabo totam, dolor eaque earum laborum voluptatum ducimus? Quisquam nihil accusamus fugit molestiae ipsum inventore fuga delectus. Ad, deleniti impedit officia adipisci voluptatibus natus fugit! Hic quasi corporis quia rerum illum sequi, eligendi qui distinctio cum alias corrupti accusamus ipsum?</div>
+        <h2>JavaScript</h2>
+        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse quisquam explicabo totam, dolor eaque earum laborum voluptatum ducimus? Quisquam nihil accusamus fugit molestiae ipsum inventore fuga delectus. Ad, deleniti impedit officia adipisci voluptatibus natus fugit! Hic quasi corporis quia rerum illum sequi, eligendi qui distinctio cum alias corrupti accusamus ipsum?</div>
+    </div>
+
+
+    <h1>Button</h1>
+
+    <div id="btns">
+        <input type="button" value="등록하기" id="btn1" class="btn">
+        <input type="button" value="취소하기" id="btn2" class="btn">
+    </div>
+
+    <a href="https://naver.com" class="btn">네이버</a>
+
+    <h1>날짜</h1>
+
+    날짜 선택: <input type="date">
+
+    <hr>
+
+    날짜 선택: <input type="text" id="date1">
+
+
+    <h1>다이얼로그</h1>
+
+    <input type="button" value="확인" id="btn3">
+    <div id="dialog1">안녕하세요.</div>
+
+    <h1>슬라이더</h1>
+
+    <div id="slider1" class="slider"></div>
+
+    <div id="result1"></div>
+
+    <hr>
+
+    <div id="slider2" class="slider"></div>
+    <div id="slider3" class="slider"></div>
+    <div id="slider4" class="slider"></div>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+    <script>
+
+
+        $('#a1').accordion({
+            collapsible: true
+        });
+
+        $('.btn').button();
+
+        $('#btns').controlgroup();
+
+        $('#date1').datepicker({
+            dateFormat: 'yy-mm-dd',
+            // minDate: '-5',
+            // maxDate: '+5'
+            // minDate: '-1M -5D',
+            // maxDate: '+1M +5D'
+            minDate: '2022-06-05',
+            maxDate: '2022-06-20'
+        });
+
+
+
+        //대화상자
+        //1. modal
+        //  - 팝업창이 포커스를 독점한다.
+        //  - 팝업창의 업무가 종료되기 전까지 부모창의 업무를 진행(병행) 불가능
+        //  - 팝업창 <- (종속적) -> 부모창
+
+        //2. modeless
+        //  - 팝업창과 부모창의 포커스 전환이 자유롭다.
+        //  - 팝업창의 업무와 부모창의 업무를 동시에 진행할 수 있다.
+        //  - 팝업창 <- (비종속적) -> 부모창
+
+        $('#dialog1').hide();//안녕하세요 감춰놓기
+
+        $('#btn3').click(function() {
+            $('#dialog1').dialog({
+                title: '대화상자',
+                width: 300,
+                height: 200,
+                draggable: false, //팝업창 이동 불가
+                resizable: false, //팝업창 사이즈 조절 불가
+                buttons: {
+                    // 'text': function() {
+                    //     alert();
+                    // }
+                    '확인': function() {
+
+                    },
+                    '취소': function() {
+                        $('#dialog1').dialog('close');
+                    }
+                },
+                modal: true //창이 열렸을 때 부모 페이지에 포커스가 안 간다.
+
+            });
+
+        });
+
+
+        $('#slider1').slider({
+
+            min: 100,
+            max: 1000,
+            step: 100,
+
+            slide: function(event, ui) {
+                $('#result1').text(ui.value); //#result1에 ui값을 text로 넣는다
+            }
+        });
+
+
+        $('#slider2, #slider3, #slider4').slider({
+
+            min: 0,
+            max: 255,
+            value: 255,
+            slide: function(event, ui) {
+
+                let r = $('#slider2').slider('value');
+                let g = $('#slider3').slider('value');
+                let b = $('#slider4').slider('value');
+
+               
+                $('body').css('background-color', `rgb(${r}, ${g}, ${b})`);
+
+            }
+
+        });
+
+
+    </script>
+
+
+</body>
+</html>
