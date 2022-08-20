@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'GmarketSansMedium';
+            color: #777;
+        }
+
+        h1 {
+            margin: 22px auto;
+        }
+
+        #id1 {
+            border: 0px;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 아이디 유효성 검사 -->
+    
+    <h1>회원 가입</h1>
+
+    <form name="formId">
+
+        <div>아이디:</div>
+        <div><input type="text" name="id"></div>
+        <div><input type="text" name="idTest" id="id1"></div>
+
+    </form>
+
+    <script>
+
+        var id = document.formId.id;
+        var idTest = document.formId.idTest;
+
+        id.onkeyup = test;
+
+        
+        function test() {
+            if (id.value.length == 0) {
+                idTest.value = '';
+            } else if (id.value.length < 4) {
+                idTest.value = "아이디가 너무 짧습니다.";
+            } else if(id.value.length > 12) {
+                idTest.value = "아이디가 너무 깁니다.";
+            } else {
+                idTest.value = "아이디가 적합합니다.";
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>

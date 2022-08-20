@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 30px;
+            color: #777;
+        }
+          
+        #txt {
+            width: 100%;
+            height: 61px;
+            padding: 2px;
+            margin: 2px;
+            outline: none;
+            border: 1px solid black;
+            font-size: 3em;
+            font-weight: bold;
+            color: #777;
+            
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            border: 1px solid black;
+            
+        }
+
+        td {
+            border: 1px solid black;
+            width: 132px;
+            height: 63px;
+            padding: 4px;
+            margin: 1px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>제목입니다.</h1>
+        <input type="text" id="txt" autofocus>
+        <hr>
+        <h2>다른 내용입니다.</h2>
+        (p>lorem30)*4
+
+        <h1>Table</h1>
+
+        <table>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Nesciunt, blanditiis nam.
+                </td>
+                <td>
+                    Deleniti, error quisquam?
+                </td>
+                <td>
+                    Iusto, iure aspernatur.
+                </td>
+                <td>
+                    Iusto, illum hic?
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Expedita, voluptas non.
+                </td>
+                <td>
+                    Odit, porro consectetur.
+                </td>
+                <td>
+                    In, impedit dolorum?
+                </td>
+                <td>
+                    Sit, exercitationem neque.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Laudantium, rerum laboriosam!
+                </td>
+                <td>
+                    Nobis, vitae iusto.
+                </td>
+                <td>
+                    Velit, tenetur et.
+                </td>
+                <td>
+                    Veritatis, porro earum.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Quas, ratione quo.
+                </td>
+                <td>
+                    Consequatur, vero voluptates.
+                </td>
+                <td>
+                    Nesciunt, cupiditate hic?
+                </td>
+                <td>
+                    Nam, atque ad.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Debitis, provident quisquam?
+                </td>
+                <td>
+                    Voluptates, maxime voluptate?
+                </td>
+                <td>
+                    Ab, mollitia odit.
+                </td>
+                <td>
+                    Quasi, facilis iste.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Porro, deserunt ut.
+                </td>
+                <td>
+                    Repellat, laborum perspiciatis.
+                </td>
+                <td>
+                    Recusandae, asperiores optio?
+                </td>
+                <td>
+                    Velit, nisi voluptas.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Dolores, numquam tempora.
+                </td>
+                <td>
+                    Quia, odit nemo?
+                </td>
+                <td>
+                    Odit, porro quia.
+                </td>
+                <td>
+                    Facere, cupiditate officiis.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lorem, ipsum dolor.
+                </td>
+                <td>
+                    Totam, tempora nostrum.
+                </td>
+                <td>
+                    Culpa, eum ratione!
+                </td>
+                <td>
+                    Animi, doloribus veritatis!
+                </td>
+                <td>
+                    Saepe, esse fuga?
+                </td>
+            </tr>
+            
+
+        </table>
+
+    </div>
+
+    <script>
+
+        let color = 0;
+        let gap = 0;
+        let timer = 0;
+
+        let txt = document.getElementById('txt');
+
+        txt.onkeydown = function() {
+
+            let move = [-5, 5, 0];
+
+            // alert(move[parseInt(Math.random() * 2)]);
+
+            document.body.style.transform = 'translate(' + move[parseInt(Math.random() * 2)] +'px, ' + move[parseInt(Math.random() * 2)] + 'px)';
+
+            setTimeout(function() {
+                document.body.style.transform = 'translate(' + move[parseInt(Math.random() * 2)] +'px, ' + move[parseInt(Math.random() * 2)] + 'px)';
+            }, 5);
+
+
+            //제자리
+            setTimeout(function() {
+                document.body.style.transform = 'translate(0px, 0px)'
+            }, 20);
+
+            
+            document.body.style.backgroundColor = 'rgba(255, 0, 0,' + color + ')';
+            color += 0.02;
+            gap = 0;
+        };
+
+
+        timer = setInterval(function() {
+
+            gap++;
+            
+            if(gap > 2){
+                gap = 0;
+                color = 0;
+                timer = 0;
+                document.body.style.backgroundColor = 'white';
+            }
+
+        }, 1000);
+
+    </script>
+</body>
+</html>

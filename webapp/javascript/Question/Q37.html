@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            transition: 1s all;
+        }
+        
+        .chap {
+            width: 800px;            
+            padding: 20px;
+            padding-bottom: 400px;
+            margin: 0 auto;
+            border: 1px solid black;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="chap">
+        <h1>Index</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto eum laborum aliquam nemo pariatur exercitationem reprehenderit tempore deserunt quae voluptates!</p>
+    </div>
+    <div class="chap">
+        <h1>About me</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aperiam odit nam, sed itaque voluptate quia alias ex obcaecati, repellat voluptatibus aliquid ad placeat eaque praesentium quidem numquam neque suscipit? Pariatur beatae optio id, debitis aspernatur voluptatum quisquam eius. Vel facere iusto ullam eaque! Ea voluptates sunt sit cumque ad aspernatur qui dolor deserunt, soluta possimus ducimus recusandae perspiciatis illo illum harum atque consectetur eius? Quasi qui omnis voluptatibus corrupti dolor dolorem. Facere expedita quia amet, fugiat eveniet alias repellat repudiandae libero, mollitia accusamus nostrum odio eius impedit minima cupiditate itaque earum similique cum et aut id dolor deleniti veritatis.</p>
+    </div>
+    <div class="chap">
+        <h1>Career</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint perferendis rerum sit magni doloribus hic consectetur esse natus, maxime ex optio commodi numquam dignissimos minima, pariatur fuga tenetur rem ipsam tempora? Laboriosam nesciunt similique ipsa rerum sapiente totam amet maiores tenetur saepe, veniam cum est quas temporibus repellendus eius ut?</p>
+    </div>
+    <div class="chap">
+        <h1>Protfolio</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis vel, mollitia saepe itaque voluptates architecto, ab consectetur atque eum cumque ratione esse modi autem odit dolore officia nulla natus. Provident, aut. Nisi nihil nulla ea facilis voluptatibus quis, tempore accusantium vero maxime tenetur blanditiis, sit dolorem natus quisquam, ullam accusamus sint quaerat id repudiandae soluta nemo cum magni iure. Tempore, explicabo? Voluptatem, voluptatum omnis harum reiciendis quos ab saepe ex excepturi vero accusantium iusto minima exercitationem dolore maiores facere laborum.</p>
+    </div>
+    <div class="chap">
+        <h1>Education</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, facere minus laboriosam velit, et temporibus tempore sit vero provident ab facilis repellat consectetur fugit tempora iusto dolore iure quasi nostrum corrupti voluptatum adipisci architecto expedita esse? Repellat vitae dolores quasi dolorem magnam, totam similique quo a quis ex voluptatem doloremque architecto ipsa reprehenderit necessitatibus perferendis reiciendis optio omnis delectus nisi dolor expedita! Sequi architecto laudantium aperiam modi quidem assumenda vero culpa excepturi unde deserunt aliquam, debitis, tempora, exercitationem labore eveniet accusamus in veritatis ea facilis odio quam nam suscipit magni voluptas? Omnis sunt alias ab nobis pariatur earum at esse aut quod nam a quisquam unde explicabo dolore ducimus eveniet vel eum, nihil velit maiores. Corrupti ipsum incidunt perferendis cupiditate hic a in nisi natus, deleniti quasi, similique saepe ad voluptatibus fugiat rerum laboriosam. Corporis deserunt ea optio. Officiis sequi maiores magni ullam perspiciatis dolores quo dicta, aut delectus dolor.</p>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br>
+
+
+    <script>
+
+        const list = document.getElementsByClassName('chap');
+
+        //top을 그대로 쓰면 해당 div가 페이지 상단에 완전 붙어야 배경색이 바뀐다. 그래서 - 100 정도 해주면 더 자연습럽다.
+        const d1 = list[0].getBoundingClientRect().top;
+        const d2 = list[1].getBoundingClientRect().top - 200; 
+        const d3 = list[2].getBoundingClientRect().top - 200;
+        const d4 = list[3].getBoundingClientRect().top - 200;
+        const d5 = list[4].getBoundingClientRect().top - 200;
+
+        window.onscroll = function() {
+
+            if (window.scrollY < d2) { //scollY값이 d2보다 작으면 d1부분이기때문에 white
+                console.log(1);
+                document.body.bgColor = 'white';
+            } else if (window.scrollY < d3) {
+                console.log(2);
+                document.body.bgColor = 'tomato';
+            } else if (window.scrollY < d4) {
+                console.log(3);
+                document.body.bgColor = 'gold';
+            } else if (window.scrollY < d5) {
+                console.log(4);
+                document.body.bgColor = 'cornflowerblue';
+            } else {
+                console.log(5);
+                document.body.bgColor = 'yellowgreen';
+            }
+        };
+
+        //좌표계와 상관없이 현재 좌표값 확인
+		console.log(document.getElementsByClassName('chap')[1].getBoundingClientRect().top);
+
+    </script>
+
+</body>
+</html>

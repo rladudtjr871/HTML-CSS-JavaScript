@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .item {
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        
+        var imgCount = 0
+        var firstImage = null;
+
+        window.onmousedown = function (event) {
+
+            imgCount = 0
+            var n = Math.floor((Math.random() * 9) + 1);
+            //alert(n);
+
+            let img = document.createElement('img');
+
+
+
+            img.setAttribute('src', '../images/face0' + n + '.png');
+            img.classList.add('item');
+
+            img.style.left = event.clientX - 64 + 'px';
+            img.style.top = event.clientY - 64 + 'px';
+
+            document.body.appendChild(img);
+
+
+            //10개
+            for (var i=0; i<document.body.children.length; i++) {
+                if (document.body.children[i].nodeName == 'IMG') {
+                    if (firstImage == null) {
+                        firstImage = document.body.children[i];
+                        //alert(firstImage);
+                    }
+                    imgCount++;
+                }
+            }
+
+            if (imgCount > 10) {
+                document.body.removeChild(firstImage);
+                firstImage = null;
+            }
+
+            
+            //이해 못한 부분 > for문 처음에만 firstImage에 img객체를 저장하는데 10개가 채워진 후 어떻게 첫 img가 지워지고 다음 것도 지워지는가?
+            //답 > 클릭 1번 for문 1번 루프 > ... > 클릭 10번쨰 for문 10번 돌기
+            //  > 11번쨰 클릭에서는 0번째인 첫 img객체가 지워짐
+            // > 12번째 클릭시에는 firstImage에 들어있던 원래 0번째 객체가 지워지고 firstImage는 null
+            //원래1번째였던 img가 0번쨰가 되면서 firstImage에 들어가게된다.
+
+
+        }
+
+
+
+    </script>
+</body>
+</html>

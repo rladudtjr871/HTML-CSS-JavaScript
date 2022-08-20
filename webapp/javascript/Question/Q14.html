@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+        textarea {
+            width: 900px;
+            height: 250px;
+            padding: 2px;
+            border: 1px solid black;
+            font-family: 'BRRA_R';
+            color: #444;
+            font-size: 1.0321em;
+        }
+
+        input {
+            font-family: 'BRRA_R';
+            color: #444;
+            font-size: 1.0321em;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <form name="formbox">
+
+        <textarea name="txtBord"></textarea>
+
+
+        <textarea name="txtOrigin">
+네, 낮동안에도 찬바람이 강하게 불고있습니다.
+때문에 체감상 느껴지는 온도는 현재기온보다 2~3도가량 낮게 나타나고 있는데요.
+남부해안지역과 제주도를 중심으로는 강풍주의보도 이어지고 있기 때문에 시설물 피해 없도록 주의하셔야겠습니다.
+쌀쌀했던 어제보다도 기온이 더 오르지 못하고있습니다.
+현재기온 서울 7.3도, 대전 9.3도, 부산 6.8도로 이맘때 평년수준을 밑돌고있고요. 
+찬바람이 더해지면서 체감상 느껴지는 날씨는 더 쌀쌀합니다.
+꽃샘추위는 내일 절정을 보이겠습니다.
+        </textarea>
+
+        <div>
+            <input type="button" name="btnStart" value="시작">
+            <input type="button" name="btnStop" value="정지">
+        </div>
+
+    </form>
+
+
+    <script>
+
+        var txtBord, txtOrigin, btnStart, btnStop;
+        var length = 0; //몇번쨰 글자인지 카운트할 변수
+        var timer = 0; //타이머 번호를 0으로
+
+        txtBord = document.formbox.txtBord;
+        txtOrigin = document.formbox.txtOrigin;
+        btnStart = document.formbox.btnStart;
+        btnStop = document.formbox.btnStop;
+
+        btnStart.onclick = start;
+        btnStop.onclick = stop;
+
+
+
+        function start() {
+            
+            //타이머를 setInterval로 생성하고 timer에 객체를 저장
+            if (timer == 0) {
+                timer = setInterval(copy, 30);
+
+            }
+        }
+
+        function copy() {
+
+            //bord에 origin의 글자를 0번째부터 length번째까지를 추출하여 복사
+            txtBord.value = txtOrigin.value.substr(0, length);
+            length++;   //복사 후 length는 다음에 1글자 더 복사를 위해 증가
+            if (length == txtOrigin.value.length) { //만약 length와 origin의 글자 길이가 같으면 타이머 스탑
+                clearInterval(timer);
+            }
+
+        }
+
+        function stop() {
+
+            clearInterval(timer);
+            timer = 0;
+
+        }
+
+
+
+    </script>
+
+</body>
+</html>

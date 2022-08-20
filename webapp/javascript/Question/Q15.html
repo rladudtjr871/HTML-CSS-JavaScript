@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        
+        #time {
+
+            border: 1px solid black;
+            padding: 5px;            
+            width: 560px;
+            height: 159px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #time input, #time span {
+            float: left;
+            font-size: 7em;
+        }
+
+        #time::after {
+            content: " ";
+            display: both;
+            clear: both;
+        }
+
+        #time > input {
+            border: 0px;
+            width: 155px;
+            height: 157px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #time > span {            
+            margin-bottom: 3px;
+            text-align: center;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <form name="formBox">
+        <div id="time">
+
+            <input type="text" name="hour" value="00">
+            <span>:</span>
+            <input type="text" name="min" value="00">
+            <span>:</span>
+            <input type="text" name="sec" value="00">               
+
+        </div>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body {
+            color: #777;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- 고양이 사이즈 -->
+
+    <h1>고양이</h1>
+
+    <form name="form1">
+        <img src="../images/catty01.png" name="cat">
+        <img src="../images/catty02.png" name="cat">
+        <img src="../images/catty03.png" name="cat">
+        <img src="../images/catty04.png" name="cat">
+        <img src="../images/catty05.png" name="cat">
+    </form>
+
+    <script>
+        
+        for (var i=0; i<document.images.length; i++) {
+            if (document.images[i].name == 'cat') {
+                document.images.onkeydown = sizeUp; //49 50 51 52 53
+                document.images.onmouseover = sizeUp;
+                document.images.onclick = sizeDown;
+                document.images.onkeydown = sizeDown;
+            }
+        }
+
+
+        function sizeUp() {
+
+            if ()
+
+        }
+
+        function sizeDown() {
+            
+        }
+
+        function sizeUp() {
+            
+        }
+
+        function sizeUp() {
+            
+        }
+
+
+    </script>
+
+</body>
+</html>
